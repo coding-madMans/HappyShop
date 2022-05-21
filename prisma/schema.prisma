@@ -6,6 +6,99 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["dataProxy"]
+}
+
+model User {
+  User_ID      String     @id
+  Name         String
+  Email        String
+  Type         String
+  Contact      String
+  PasswordHash String
+  Address      Addres[]
+  Item         Item[]
+  Order        Order[]
+  Rating       Rating[]
+  Cart         Cart[]
+  WishList     WishList[]
+}
+
+model Addres {
+  Addres_ID String @id
+  UserID    User   @relation(fields: [userID], references: [User_ID])
+  userID    String
+  Adress    String
+  PinCode   String
+}
+
+model Item {
+  Item_ID     String     @id
+  Name        String
+  Seller_ID   User       @relation(fields: [userUser_ID], references: [User_ID])
+  CP          Float
+  SP          Float
+  Quantity    Float
+  Category    String
+  userUser_ID String
+  Image       Image[]
+  Billing     Billing[]
+  Rating      Rating[]
+  Cart        Cart[]
+  WishList    WishList[]
+}
+
+model Image {
+  Image_ID    String @id
+  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
+  ImageUrl    String
+  itemItem_ID String
+}
+
+model Billing {
+  Billing_ID  String  @id
+  Item_code   Item    @relation(fields: [itemItem_ID], references: [Item_ID])
+  Quantity    Float
+  Price       Float
+  itemItem_ID String
+  Order       Order[]
+}
+
+model Order {
+  Order_ID          String   @id
+  User_ID           User     @relation(fields: [userUser_ID], references: [User_ID])
+  Billing_ID        Billing  @relation(fields: [billingBilling_ID], references: [Billing_ID])
+  PaymentType       String
+  Time              DateTime
+  userUser_ID       String
+  billingBilling_ID String
+}
+
+model Rating {
+  Rating_ID   String @id
+  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
+  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
+  RevStars    Int
+  Comment     String
+  userUser_ID String
+  itemItem_ID String
+}
+
+model Cart {
+  Cart_ID     String @id
+  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
+  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
+  Quantity    Float
+  userUser_ID String
+  itemItem_ID String
+}
+
+model WishList {
+  WishList_ID String @id
+  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
+  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
+  Quantity    Float
+  userUser_ID String
+  itemItem_ID String
 }
