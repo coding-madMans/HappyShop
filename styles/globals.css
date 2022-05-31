@@ -1,16 +1,11 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+.dataCard {
+    background-color: aqua;
+    display: inline-block;
+    margin: 2px;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+.dataCard img {
+    width: 200px;
+    height: 200px;
 }

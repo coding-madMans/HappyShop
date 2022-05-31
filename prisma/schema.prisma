@@ -1,104 +1,113 @@
-// An empty Prisma Schema with no models, perfect as a starting point for your own schema.
-
-datasource db {
-  provider = "postgres"
-  url      = env("DATABASE_URL")
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["dataProxy"]
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://postgres:postgres@localhost:5432/HappyShop?connect_timeout=5&schema=public"
 }
 
 model User {
-  User_ID      String     @id
+  id           String     @id @default(uuid())
   Name         String
+  DOB          DateTime
   Email        String
-  Type         String
-  Contact      String
+  Password     String
   PasswordHash String
-  Address      Addres[]
+  contact      String
+  Type         String
+  Address      Address[]
   Item         Item[]
-  Order        Order[]
   Rating       Rating[]
   Cart         Cart[]
   WishList     WishList[]
+  Orders       Orders[]
 }
 
-model Addres {
-  Addres_ID String @id
-  UserID    User   @relation(fields: [userID], references: [User_ID])
-  userID    String
-  Adress    String
-  PinCode   String
+model Address {
+  id      String @id @default(uuid())
+  User_id User   @relation(fields: [userId], references: [id])
+  City    String
+  State   String
+  Country String
+  Pin     Int
+  userId  String @unique
 }
 
 model Item {
-  Item_ID     String     @id
-  Name        String
-  Seller_ID   User       @relation(fields: [userUser_ID], references: [User_ID])
-  CP          Float
-  SP          Float
-  Quantity    Float
-  Category    String
-  userUser_ID String
-  Image       Image[]
-  Billing     Billing[]
-  Rating      Rating[]
-  Cart        Cart[]
-  WishList    WishList[]
+  id        String     @id @default(uuid())
+  Seller_id User       @relation(fields: [userId], references: [id])
+  Name      String
+  Price     Float
+  Quantity  Float
+  userId    String
+  Images    Images[]
+  Tags      Tags[]
+  Rating    Rating[]
+  Cart      Cart[]
+  WishList  WishList[]
+  Billing   Billing[]
 }
 
-model Image {
-  Image_ID    String @id
-  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
-  ImageUrl    String
-  itemItem_ID String
+model Images {
+  id        String @id @default(uuid())
+  Item_id   Item   @relation(fields: [itemId], references: [id])
+  Image_URL String
+  itemId    String
 }
 
-model Billing {
-  Billing_ID  String  @id
-  Item_code   Item    @relation(fields: [itemItem_ID], references: [Item_ID])
-  Quantity    Float
-  Price       Float
-  itemItem_ID String
-  Order       Order[]
-}
-
-model Order {
-  Order_ID          String   @id
-  User_ID           User     @relation(fields: [userUser_ID], references: [User_ID])
-  Billing_ID        Billing  @relation(fields: [billingBilling_ID], references: [Billing_ID])
-  PaymentType       String
-  Time              DateTime
-  userUser_ID       String
-  billingBilling_ID String
+model Tags {
+  id       String @id @default(uuid())
+  Item_id  Item   @relation(fields: [itemId], references: [id])
+  Category String
+  itemId   String
 }
 
 model Rating {
-  Rating_ID   String @id
-  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
-  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
-  RevStars    Int
-  Comment     String
-  userUser_ID String
-  itemItem_ID String
+  id       String @id @default(uuid())
+  User_id  User   @relation(fields: [userId], references: [id])
+  Item_id  Item   @relation(fields: [itemId], references: [id])
+  Rating   Int
+  Comments String
+  userId   String
+  itemId   String
 }
 
 model Cart {
-  Cart_ID     String @id
-  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
-  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
-  Quantity    Float
-  userUser_ID String
-  itemItem_ID String
+  id       String @id @default(uuid())
+  User_id  User   @relation(fields: [userId], references: [id])
+  Item_id  Item   @relation(fields: [itemId], references: [id])
+  Quantity Int
+  userId   String
+  itemId   String
 }
 
 model WishList {
-  WishList_ID String @id
-  User_ID     User   @relation(fields: [userUser_ID], references: [User_ID])
-  Item_ID     Item   @relation(fields: [itemItem_ID], references: [Item_ID])
-  Quantity    Float
-  userUser_ID String
-  itemItem_ID String
+  id      String @id @default(uuid())
+  User_id User   @relation(fields: [userId], references: [id])
+  Item_id Item   @relation(fields: [itemId], references: [id])
+  userId  String
+  itemId  String
+}
+
+model Billing {
+  id       String   @id @default(uuid())
+  Item_id  Item     @relation(fields: [itemId], references: [id])
+  Quantity Int
+  Price    Float
+  itemId   String
+  Orders   Orders[]
+}
+
+model Orders {
+  id          String   @id @default(uuid())
+  User_id     User     @relation(fields: [userId], references: [id])
+  Bill_id     Billing  @relation(fields: [billingId], references: [id])
+  PaymentType String
+  Time        DateTime
+  userId      String
+  billingId   String
 }
