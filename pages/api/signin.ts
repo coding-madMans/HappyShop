@@ -54,7 +54,7 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
             Type: "User"
         }
     }).then(data => {
-        res.status(200).json({});
+        res.status(200).json({data});
         res.end();
     }).catch(err => {
         res.status(500).json({error: err});

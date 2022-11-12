@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 import { NextPage } from "next";
 import Router from "next/router";
@@ -22,7 +23,6 @@ const Login: NextPage = () => {
                     })
                     .then(data => {
                         if (data.success) {
-                            console.log(data);
                             localStorage.setItem("id", data.id);
                             setTimeout(() => {
                                 setTimeout(() => window.location.reload(), 100);

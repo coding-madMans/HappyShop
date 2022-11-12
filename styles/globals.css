@@ -1,4 +1,32 @@
 
+body {
+    width: 95%;
+    margin: auto;
+    background-color: aquamarine;
+}
+
+* {
+    transition: all 100000ms ease-in-out;
+}
+
+/* NAV */
+.navbar {
+    border: 1px solid #000;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.NavBrand a {
+    color: black;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.NavBrand a:hover {
+    text-decoration: underline;
+}
+
 .dataCard {
     background-color: aqua;
     display: inline-block;
@@ -8,4 +36,30 @@
 .dataCard img {
     width: 200px;
     height: 200px;
+}
+
+.loading {
+    border: 1px solid #000;
+    display: inline-block;
+    margin: 2px;
+    width: 200px;
+    height: 200px;
+}
+
+.buyTable {
+    border: 1px solid #000;
+    margin: .4rem;
+}
+
+.buyTable > tr > td {
+    border: 1px solid green;
+}
+
+.buyTable > tr > th {
+    border: 1px solid #000;
+    padding: .4rem;
+}
+
+.buyTable > * {
+    text-align: center;
 }

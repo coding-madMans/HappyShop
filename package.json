@@ -20,10 +20,11 @@
     "typescript": "4.6.4"
   },
   "scripts": {
-    "generate": "prisma generate",
-    "dev": "prisma generate && next dev",
-    "build": "next build",
-    "start": "next start",
+    "gen": "prisma generate",
+    "db" : "prisma studio --port 5000",
+    "dev": "prisma generate && start prisma studio --port 5000 && next dev",
+    "build": "prisma generate && next build --no-lint",
+    "start": "start prisma studio --port 5000 && start next start",
     "lint": "next lint"
   }
 }

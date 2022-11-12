@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = "postgres://postgres:postgres@localhost:5432/HappyShop?connect_timeout=5&schema=public"
+  url      = "postgres://postgres:V@$u47WithSql@localhost:5432/HappyShop?connect_timeout=5&schema=public"
 }
 
 model User {

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 import { Item } from "@prisma/client";
 import { useEffect, useState } from "react";
@@ -33,13 +34,32 @@ const CartInfo = () => {
         }, 600)
     }, []);
 
+    // operation: string, id: string
+    const addAndRemoveItems = (e: any) => {
+        const target = e.target;
+        const id :string = target.id;
+        const operation :string = target.innerText;
+        // console.log(id, operation);
+        fetch("api/Cart/" + id, {
+            method: "PATCH",
+            body: JSON.stringify({
+                "operation": operation
+            })
+        }).then(response => {
+            console.log("from UPDATE : " + response);
+            console.log(response);
+        }).catch(err => {
+            console.log("error" + err);
+        });
+    }
+
     if (fetchingCart) {
         return <div>
             fetching
         </div>
     } else {
         return <div>
-            <table>
+            <table className="buyTable">
                 <tr>
                     <th>Item Name</th>
                     <th>Price</th>
@@ -53,7 +73,11 @@ const CartInfo = () => {
                         <td>{ele.Item_id.Price}</td>
                         <td>{ele.Quantity}</td>
                         <td>{ele.Item_id.Price * ele.Quantity}</td>
-                        <td><button>-</button>{ele.Quantity}<button>+</button></td>
+                        <td>
+                            <button id={ele.id} onClick={addAndRemoveItems}>-</button>
+                            {ele.Quantity}
+                            <button id={ele.id} onClick={addAndRemoveItems}>+</button>
+                        </td>
                     </tr>
                 })}
             </table>

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-html-link-for-pages */
 
 import { useEffect, useState } from "react";
 
@@ -28,12 +29,16 @@ const Nav = () => {
         setFetchingUser(false)
     }, []);
 
+    const search = (e: any) => {
+        e.preventDefault();
+    };
+
     if (fetchingUser) {
         return <nav className="navbar">
         <div className="NavBrand"><h1><a href="/">Happy Shop</a></h1></div>
         <form>
+            <button className="navSearchButton" onClick={search} >Search</button>
             <input type="text" className="navSearchInput"/>
-            <button className="navSearchButton">Search</button>
         </form>
         <div className="navList">
             <ul className="navList">
@@ -47,7 +52,7 @@ const Nav = () => {
         <div className="NavBrand"><h1><a href="/">Happy Shop</a></h1></div>
         <form>
             <input type="text" className="navSearchInput"/>
-            <button className="navSearchButton">Search</button>
+            <button className="navSearchButton" onClick={search} >Search</button>
         </form>
         <div className="navList">
             <ul className="navList">
@@ -56,7 +61,7 @@ const Nav = () => {
                 {((user.id == undefined) || (user.id == "")) ? 
                     <li className="navListItem"><a href="/login" className="navListLink">Login</a></li>:
                     <>
-                        <li className="navListItem"><a href="/cart" className="navListLink">cart</a> {user.Cart.length}</li>
+                        <li className="navListItem"><a href="/cart" className="navListLink">cart</a> {(user as any ).Cart.length}</li>
                         <li className="navListItem"><a href="/signout">signout</a></li>
                         {user.Type == "SuperAdmin"? <li className="navListItem" ><a href="/admin" target="_blank">Admin Panel</a></li>:<></>}
                     </>

@@ -3,6 +3,9 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import styles from "../styles/Home.module.css";
 
+
+const loadingLatency = 3000;
+
 const Home: NextPage = () => {
 
     const [fetchingData, setFetchingData] = useState(true);
@@ -19,19 +22,19 @@ const Home: NextPage = () => {
         fetch("/api/Items").then(res => res.json()).then(json => setData(json));
         setTimeout( () => {
             setFetchingData(false);
-        }, 1000)
+        }, loadingLatency);
     }, [])
 
     const renderData = () => {
         if (fetchingData) {
             return <div className="CardContiner">
-                <div className={styles.loading}>1</div>
-                <div className={styles.loading}>2</div>
-                <div className={styles.loading}>3</div>
-                <div className={styles.loading}>4</div>
-                <div className={styles.loading}>5</div>
-                <div className={styles.loading}>6</div>
-                <div className={styles.loading}>7</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
+                <div className={"loading"}>Loading</div>
             </div>
         }else{
             return <div>

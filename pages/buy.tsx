@@ -39,7 +39,7 @@ const CartInfo = () => {
         </div>
     } else {
         return <div>
-            <table>
+            <table className="buyTable">
                 <tr>
                     <th>Item Name</th>
                     <th>Price</th>

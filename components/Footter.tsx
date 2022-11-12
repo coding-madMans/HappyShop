@@ -1,7 +1,7 @@
 
 const Footter = () => {
     return <div>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim aspernatur rem blanditiis at illum dicta harum laudantium, eaque repellendus repellat, facere quaerat sequi corporis ratione dolor ipsam dolorum veritatis inventore!</p>
+        <p>Intern Project By Vasu Subbannavar</p>
     </div>
 }
 

@@ -7,9 +7,9 @@ if (process.env.NODE_ENV === 'production') {
     db = new PrismaClient();
 }else {
     if (db == undefined) {
-        global.db = new PrismaClient();
+        (global as any).db = new PrismaClient();
     }
-    db = global.db;
+    db = (global as any).db;
 }
 
 export { db };
