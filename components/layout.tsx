@@ -9,7 +9,9 @@ const Layout = (props: {
 }) => {
     return <>
         <Nav></Nav>
+        <hr />
         <props.Component {...props.pageProps} />
+        <hr />
         <Footter></Footter>
     </>
 }

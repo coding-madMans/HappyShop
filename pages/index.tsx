@@ -1,67 +1,14 @@
-import { Images, Tags } from "@prisma/client";
-import type { NextPage } from "next";
-import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
+import type { NextPage } from 'next'
+import Head from 'next/head'
 
-const Home: NextPage = () => {
+const Index: NextPage = () => {
+  return <div>
+    <Head>
+      <title>Happy Shop</title>
+    </Head>
+    <h1>Lorem</h1>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero nesciunt similique odit error deserunt delectus velit, nostrum asperiores adipisci, unde vitae corporis, soluta esse non a necessitatibus autem culpa quo. Esse, quos minima reiciendis dolorum soluta vero qui placeat provident possimus facilis libero natus quas minus ratione in ut id cum ipsam. Necessitatibus hic adipisci magni totam a facilis veritatis beatae delectus animi! Dolorum, veniam ratione, ad distinctio inventore sunt facere ut magni porro aliquid itaque! Minima fugit beatae, possimus nemo necessitatibus rerum ducimus quas doloribus non sint. Officia mollitia at ipsa necessitatibus nemo impedit ex earum dolor sed, repellendus consequuntur excepturi repudiandae aspernatur nihil fugiat aut quaerat veniam tempore atque debitis a exercitationem pariatur temporibus aperiam? Accusamus ipsam odio consequatur deleniti officia nobis! Accusamus, eum ex consequuntur excepturi placeat cupiditate maxime. Ratione cumque, facilis necessitatibus eveniet numquam temporibus dolor sunt iusto tenetur odio aperiam amet porro, accusamus impedit, sed ullam accusantium beatae! Reiciendis vitae blanditiis ipsum fugit, quas ex. Amet, vel sequi exercitationem alias voluptates nulla fuga, dicta sunt hic maxime provident esse magnam vitae eligendi nesciunt delectus distinctio possimus! Minima sapiente praesentium harum voluptates vel, maxime maiores quae, similique facilis ipsum vitae voluptate a facere debitis! Ullam soluta, harum cum assumenda doloribus pariatur expedita quos nesciunt error! Veniam, dolor vel! Laborum repellat ratione nesciunt, consequatur minus ipsam unde, omnis ex, perferendis iure ducimus soluta dicta nemo rerum? Laborum necessitatibus quia magni excepturi corrupti aliquam. Voluptates omnis earum, blanditiis ut minus placeat recusandae totam, dolore consectetur ea libero itaque corporis velit tenetur cum quis aspernatur quisquam distinctio aut possimus laboriosam impedit consequatur. Odio assumenda optio atque ratione explicabo earum id esse nihil praesentium sit sint accusantium impedit veniam aliquid voluptatibus, ea, eaque repellat harum inventore obcaecati alias vel. Veritatis, aut nemo. Delectus, ad cupiditate minima unde mollitia consequatur aspernatur.</p>
+  </div>
+}
 
-    const [fetchingData, setFetchingData] = useState(true);
-    const [data, setData] = useState([{
-        id: "",
-        Name: "",
-        Price: 0,
-        Quantity: 0,
-        Images: [] as unknown as Images[],
-        Tags: [] as unknown as Tags[]
-    }]);
-
-    useEffect(() => {
-        fetch("/api/Items").then(res => res.json()).then(json => setData(json));
-        setTimeout( () => {
-            setFetchingData(false);
-        }, 1000)
-    }, [])
-
-    const renderData = () => {
-        if (fetchingData) {
-            return <div className="CardContiner">
-                <div className={styles.loading}>1</div>
-                <div className={styles.loading}>2</div>
-                <div className={styles.loading}>3</div>
-                <div className={styles.loading}>4</div>
-                <div className={styles.loading}>5</div>
-                <div className={styles.loading}>6</div>
-                <div className={styles.loading}>7</div>
-            </div>
-        }else{
-            return <div>
-                {data.map(ele => {return <div key={ele.id} className="dataCard">
-                    <h4>{ele.Name}</h4>
-                    <img loading="lazy" src={ele.Images[0].Image_URL}></img>
-                    <ul>
-                        {ele.Tags.map(tag => {return <li key={tag.id}>{tag.Category}</li>})}
-                    </ul>
-                    price {ele.Price} <br />
-                    <button onClick={(btn) => {
-                        const cartData = {
-                            UserID: localStorage.getItem('id'),
-                            ItemID: ele.id,
-                            Quantity: 1
-                        }
-                        fetch("/api/Cart", {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json"
-                            },
-                            body: JSON.stringify(cartData)
-                        })
-                    }}>Add To Cart</button>
-                </div>})}
-            </div>
-        }
-    }
-
-    return renderData();
-};
-
-export default Home;
+export default Index;
