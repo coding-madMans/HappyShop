@@ -6,3 +6,16 @@
 #navLinks > li {
   margin-right: .4rem;
 }
+
+.card {
+  /* aspect-ratio: 3/9; */
+  width: 18rem;
+}
+
+#form-box {
+  width: 75%;
+}
+
+.width75 {
+  width: 75% !important;
+}

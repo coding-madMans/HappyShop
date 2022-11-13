@@ -6,8 +6,8 @@ module.exports = {
         return [
             {
                 source: '/admin',
-                destination: 'http://localhost:5555/',
-                permanent: false
+                destination: 'http://localhost:5000/',
+                permanent: true
             }
         ];
     }

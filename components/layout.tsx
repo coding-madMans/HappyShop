@@ -1,6 +1,6 @@
 
 import { NextComponentType, NextPageContext } from "next";
-import Footter from "./Footter";
+import Footer from "./Footer";
 import Nav from "./Nav";
 
 const Layout = (props: {
@@ -12,7 +12,7 @@ const Layout = (props: {
     <hr />
     <props.Component {...props.pageProps} />
     <hr />
-    <Footter></Footter>
+    <Footer></Footer>
   </>
 }
 
