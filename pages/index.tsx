@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react';
 import AppContext from '../components/context/AppContext';
 
 import Card from '../components/Card';
-import { item } from "./app.types";
+import item from "./api/app.types";
 import { Cart } from '@prisma/client';
 
 const Index: NextPage = () => {

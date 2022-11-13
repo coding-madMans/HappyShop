@@ -4,7 +4,7 @@ import { useContext } from "react";
 import AppContext from "./context/AppContext";
 
 import { Images, Tags } from "@prisma/client";
-import { item } from "../pages/app.types";
+import item from "../pages/api/app.types";
 
 const Card = ({
   id,

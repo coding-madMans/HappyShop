@@ -5,7 +5,34 @@ const Register: NextPage = () => {
   return (
     <div className="row">
       <div className="container-sm col-4 d-flex justify-content-center text-center">
-        <form className="from-box" id="form-box">
+        <form className="from-box" id="form-box" onSubmit={async (e) => {
+          e.preventDefault();
+          const form = e.target as HTMLFormElement;
+          console.log(form);
+          let data = {} as any;
+          data["Name"] = (form[0] as HTMLInputElement).value;
+          data["Email"] = (form[1] as HTMLInputElement).value;
+          data["Contact"] = (form[2] as HTMLInputElement).value;
+          data["DOB"] = (form[3] as HTMLInputElement).value;
+          data["Password"] = (form[4] as HTMLInputElement).value;
+          console.log(data);
+          await fetch("/api/regester", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(data)})
+              .then(data => {
+                  console.log(data);
+                  return data.json();
+              })
+              .then(data => {
+                  setTimeout(() => {
+                    window.location.href = "/login";
+                  }, 300);
+              })
+              .catch(err => {console.error(err);});
+        }}>
         <input
             className="form-control" type="text" 
             placeholder="user name" required id="userName"
@@ -14,6 +41,10 @@ const Register: NextPage = () => {
             className="form-control" type="Email" 
             placeholder="email" required id="email"
           />
+
+          <input className="form-control" type="text" placeholder="Contact no" name="contactNo"/><br />
+          <input className="form-control" type="date" placeholder="Date of Birth" name="date"/><br />
+
           <input
             className="form-control" type="Password" 
             placeholder="password" required id="password"

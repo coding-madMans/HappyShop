@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction } from "react";
 
 import { Cart, User, Item, Images, Tags } from "@prisma/client";
 
-import { item } from "../../pages/app.types";
+import item from "../../pages/api/app.types";
 
 export interface AppDataInterface {
   isLoggedin: boolean,

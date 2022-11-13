@@ -1,7 +1,7 @@
 
 import { Images, Tags } from "@prisma/client";
 
-export interface item {
+export default interface item {
   id: string,
   Name: string,
   Price: number,
