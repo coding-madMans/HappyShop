@@ -13,7 +13,7 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
         return;
     }
     const data = req.body;
-    console.log(data);
+    // console.log(data);
     let user = [] as any;
     await prisma.user.findMany({
         select: {
@@ -50,7 +50,7 @@ export default async function user(req: NextApiRequest, res: NextApiResponse) {
         res.status(400).json({error: "Invalid Name or Email"});
         res.end();
     } else if (user[0].PasswordHash === Md5.hashStr(data.Password)) {
-        console.log({success: "succuess", id: user[0]});
+        // console.log({success: "succuess", id: user[0]});
         res.status(200).json({success: "succuess", id: user[0].id});
         res.end();
     } else {

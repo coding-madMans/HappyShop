@@ -4,8 +4,8 @@ import Link from "next/link";
 const Register: NextPage = () => {
   return (
     <div className="row">
-      <div className="container-sm col-4 d-flex justify-content-center text-center">
-        <form className="from-box" id="form-box" onSubmit={async (e) => {
+      <div className="container-md col-6">
+        <form onSubmit={async (e) => {
           e.preventDefault();
           const form = e.target as HTMLFormElement;
           console.log(form);
