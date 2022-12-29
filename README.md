@@ -1,7 +1,7 @@
 <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="Happyshop" />
 
-  &#xa0;
+&#xa0;
 
   <!-- <a href="https://happyshop.netlify.app">Demo</a> -->
 </div>
@@ -28,7 +28,7 @@ Status
 
 <h4 align="center"> 
 	🚧  Happyshop 🚀 Under construction...  🚧
-</h4> 
+</h4>
 
 <hr>
 
@@ -44,17 +44,17 @@ Status
 
 <br>
 
-## :dart: About ##
+## :dart: About
 
 Describe your project
 
-## :sparkles: Features ##
+## :sparkles: Features
 
 :heavy_check_mark: Feature 1;\
 :heavy_check_mark: Feature 2;\
 :heavy_check_mark: Feature 3;
 
-## :rocket: Technologies ##
+## :rocket: Technologies
 
 The following tools were used in this project:
 
@@ -64,11 +64,11 @@ The following tools were used in this project:
 - [React Native](https://reactnative.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 
-## :white_check_mark: Requirements ##
+## :white_check_mark: Requirements
 
 Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Node](https://nodejs.org/en/) installed.
 
-## :checkered_flag: Starting ##
+## :checkered_flag: Starting
 
 ```bash
 # Clone this project
@@ -86,10 +86,9 @@ $ yarn run dev
 The server will initialize in the <http://localhost:3000>
 ```
 
-## :memo: License ##
+## :memo: License
 
 This project is under license from Apache-2.0. For more details, see the [LICENSE](LICENSE.md) file.
-
 
 Made with :heart: by <a href="https://github.com/Vasu7777py" target="_blank">Vasu Subbannavar</a>
 

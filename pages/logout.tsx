@@ -1,18 +1,15 @@
-
 import { NextPage } from "next";
 import { useEffect } from "react";
 
 const Logout: NextPage = () => {
-
   useEffect(() => {
     localStorage.removeItem("id");
-      setTimeout(() => {
-        window.location.href = "/";
+    setTimeout(() => {
+      window.location.href = "/";
     }, 300);
   }, []);
 
-  return <>
-  </>
-}
+  return <></>;
+};
 
 export default Logout;
